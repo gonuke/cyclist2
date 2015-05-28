@@ -319,8 +319,10 @@ public class Cycic extends ViewBase{
 		createArchetypeBar(grid);
 		// Adding a new Facility //
 		Label scenetitle1 = new Label("Add Prototype");
+        scenetitle1.setTooltip(new Tooltip("Use these fields to add a new prototype."));
 		grid.add(scenetitle1, 0, 0);
 		Label facName = new Label("Name");
+        facName.setTooltip(new Tooltip("Enter a name for your new prototype."));
 		grid.add(facName, 1, 0);
 		// Name Field
 		final TextField facNameField = new TextField();
@@ -365,7 +367,8 @@ public class Cycic extends ViewBase{
 		ScrollPane scroll = new ScrollPane();
 		scroll.setMinHeight(120);
 		scroll.setContent(nodesPane);
-		
+        scroll.setTooltip(new Tooltip("New archetypes will appear here when loaded."));
+    
 		skins.getItems().add("Default Skin");
 		skins.setValue("Default Skin");
 		DataArrays.visualizationSkins.add(XMLReader.SC2);
@@ -672,6 +675,11 @@ public class Cycic extends ViewBase{
 		simDets.setTooltip(new Tooltip("The top level details of the simulation."));
 		simDets.setFont(new Font("Times", 16));
 		simInfo.add(simDets, 0, 0);
+
+        Label simDur = new Label("Duration (Months)");
+        simDur.setTooltip(new Tooltip("The duration of your simulation measured in months."));
+        simInfo.add(simDur,0,1);
+
 		TextField duration = VisFunctions.numberField();
 		duration.setMaxWidth(150);
 		duration.setPromptText("Length of Simulation");
@@ -682,7 +690,7 @@ public class Cycic extends ViewBase{
 				Cycic.workingScenario.simulationData.duration = newValue;
 			}
 		});
-		simInfo.add(new Label("Duration (Months)"), 0, 1);
+        duration.setTooltip(new Tooltip("The duration of your simulation measured in months."));
 		simInfo.add(duration, 1, 1);
 		
 
